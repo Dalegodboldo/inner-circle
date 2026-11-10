@@ -62,7 +62,7 @@ function doPost(e) {
         '',
         'Estimated total: $' + num_(d.estimatedTotal).toLocaleString() + '   Deposit (50%): $' + num_(d.deposit).toLocaleString(),
         '',
-        'Next step: send this family their Paythen deposit link.'
+        'This family was sent to their Paythen deposit page. Mark "Deposit paid" once Paythen confirms it.'
       ].join('\n')
     });
 
