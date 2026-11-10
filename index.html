@@ -179,6 +179,10 @@ input:focus, textarea:focus { border-color: var(--gold); outline: 2px solid rgba
 .submit-row .btn { width: 100%; }
 .status { font-size: 0.95rem; padding: 14px 16px; background: var(--cream); border-top: 2px solid var(--gold); }
 .status[hidden] { display: none; }
+.status a { color: var(--plum); font-weight: 700; }
+.paid-note { position: sticky; top: 0; z-index: 50; display: flex; align-items: center; justify-content: center; gap: 18px; padding: 14px 20px; background: var(--gold-light); color: var(--plum); font-size: 0.95rem; font-weight: 600; text-align: center; }
+.paid-note[hidden] { display: none; }
+.paid-note button { flex: none; min-width: 44px; min-height: 44px; background: none; border: 0; color: var(--plum); font-size: 1.4rem; line-height: 1; cursor: pointer; }
 .estimate { position: sticky; top: 24px; border: 1px solid var(--gold-light); padding: 28px; display: flex; flex-direction: column; gap: 14px; font-variant-numeric: tabular-nums; }
 .estimate h3 { font-size: 1.6rem; }
 .est-row { display: flex; justify-content: space-between; gap: 16px; font-size: 0.95rem; color: rgba(248, 243, 234, 0.9); }
@@ -228,6 +232,7 @@ footer { background: var(--plum); color: rgba(248, 243, 234, 0.84); padding: 56p
 </style>
 </head>
 <body>
+<div class="paid-note" id="paid-note" role="status" hidden><p>Deposit received. Thank you! Your confirmation email is on its way, and we'll be in touch as soon as your date is confirmed.</p><button type="button" id="paid-close" aria-label="Close">&times;</button></div>
 
 <header class="hero">
   <img class="hero-img" src="img/castle.jpg" alt="Sleeping Beauty Castle lit for the holidays at night">
@@ -417,7 +422,7 @@ footer { background: var(--plum); color: rgba(248, 243, 234, 0.84); padding: 56p
     <div class="section-head">
       <p class="eyebrow">Reserve your place</p>
       <h2 id="reserve-title">Tell us who's coming</h2>
-      <p>We'll confirm your party and email your secure deposit link within one business day. Your registration is complete once your deposit is received.</p>
+      <p>Tell us who's coming, then pay your 50% deposit on our secure payment page. Your registration is complete once your deposit is received.</p>
     </div>
     <div class="reserve-grid">
       <div class="form-card">
@@ -470,7 +475,7 @@ footer { background: var(--plum); color: rgba(248, 243, 234, 0.84); padding: 56p
 
           <div class="submit-row">
             <div class="inline-total" aria-hidden="true"><span>Estimated total <b data-out="total">$4,625</b></span><span>Deposit today <b data-out="deposit">$2,312.50</b></span></div>
-            <button class="btn btn-gold" type="submit" id="submit">Send my reservation</button>
+            <button class="btn btn-gold" type="submit" id="submit">Reserve and pay deposit</button>
             <p class="status" id="status" role="status" aria-live="polite" hidden></p>
           </div>
         </form>
@@ -536,6 +541,8 @@ footer { background: var(--plum); color: rgba(248, 243, 234, 0.84); padding: 56p
   var CONFIG = {
     formEndpoint: "https://script.google.com/macros/s/AKfycbz6ktKyUqylWUWxj-O3T_j1J00xwBIGzuwPWNGgH27oXHq6tcx8iCadAISFjndx71Y/exec",
     bookingUrl: "",
+    // Paythen "Inner Circle deposit" template. The page adds each family's deposit, name, and email.
+    paythenTemplate: "https://app.paythen.co/template/uvswplpb54",
     contactEmail: "Dale@CreateImpactNow.org"
   };
   var PRICE = { member: 4625, guest: 2250 };
@@ -596,6 +603,25 @@ footer { background: var(--plum); color: rgba(248, 243, 234, 0.84); padding: 56p
   });
 
   function show(msg) { status.textContent = msg; status.hidden = false; }
+  function depositUrl(d) {
+    var dates = { "Thursday, December 17": "December 17", "Tuesday, December 22": "December 22", "Either date works": "December 17 or 22" };
+    var amount = d.deposit % 1 ? d.deposit.toFixed(2) : String(d.deposit);
+    var params = new URLSearchParams({
+      plan_name: "Inner Circle deposit: " + d.name + ", " + (dates[d.day] || d.day),
+      price: amount,
+      number_of_payments: "1",
+      name: d.name,
+      email: d.email,
+      customer_redirect_url: window.location.origin + window.location.pathname + "?deposit=received"
+    });
+    return CONFIG.paythenTemplate + "?" + params.toString();
+  }
+  (function paidNotice() {
+    var note = document.getElementById("paid-note");
+    if (!note || new URLSearchParams(window.location.search).get("deposit") !== "received") return;
+    note.hidden = false;
+    document.getElementById("paid-close").addEventListener("click", function () { note.hidden = true; });
+  })();
 
   form.addEventListener("submit", function (e) {
     e.preventDefault();
@@ -632,8 +658,16 @@ footer { background: var(--plum); color: rgba(248, 243, 234, 0.84); padding: 56p
     btn.disabled = true; btn.textContent = "Sending";
     fetch(CONFIG.formEndpoint, { method: "POST", mode: "no-cors", headers: { "Content-Type": "text/plain;charset=utf-8" }, body: JSON.stringify(data) })
       .then(function () {
-        show("Thank you, " + firstName + ". Your reservation request is in. We'll email your secure deposit link within one business day.");
+        var payUrl = depositUrl(data);
+        var upgradeNote = data.upgrades ? " We'll confirm your upgrades and send that payment separately." : "";
+        status.textContent = "Thank you, " + firstName + ". Your reservation is in. Taking you to your secure deposit page now." + upgradeNote + " ";
+        var a = document.createElement("a");
+        a.href = payUrl;
+        a.textContent = "Open the deposit page";
+        status.appendChild(a);
+        status.hidden = false;
         btn.textContent = "Reservation sent";
+        setTimeout(function () { window.location.href = payUrl; }, 2500);
       })
       .catch(function () {
         show("We couldn't send your reservation. Please email " + CONFIG.contactEmail + " and we'll take care of it.");

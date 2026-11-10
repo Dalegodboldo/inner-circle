@@ -17,6 +17,7 @@ Near the bottom of the file:
 
 - `formEndpoint`: the Apps Script web app URL. Each reservation adds a row to the Sheet and emails Dale@CreateImpactNow.org.
 - `bookingUrl`: a scheduling link for "Book a call". Empty means the button emails Dale instead.
+- `paythenTemplate`: the Paythen "Inner Circle deposit" template. After a family reserves, the page opens their own deposit page with the 50% deposit, their name, and their email filled in, then brings them back here with a "Deposit received" note. Upgrades are not included; they're confirmed and billed separately.
 
 ## Deploy
 
