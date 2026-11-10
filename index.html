@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Inner Circle at Disneyland</title>
+<meta name="description" content="A private holiday day at Disneyland for CEO Life members and their families, with a members-only dinner at 21 Royal. December 17 or 22, 2026.">
+<meta property="og:title" content="Inner Circle: a private holiday day at Disneyland">
+<meta property="og:description" content="For CEO Life members and their families. Private VIP guides, reserved parade and fireworks seating, and a members-only dinner at 21 Royal. Reserve by November 19.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&amp;family=Montserrat:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+:root {
+  /* Layout: a dark invitation hero with a gold engraved frame, then alternating ivory and plum bands, ending on the reservation card. */
+  --plum: #24123A;
+  --plum-soft: #331D4F;
+  --gold: #8A6A2C;
+  --gold-light: #E3C88E;
+  --cream: #F8F3EA;
+  --ink: #2A2233;
+  --muted: #5F566B;
+  --ivory: #FFFDF8;
+  --line: #E2D8C6;
+  --display: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --body: "Montserrat", "Helvetica Neue", Arial, sans-serif;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
+body { margin: 0; background: var(--cream); color: var(--ink); font-family: var(--body); font-size: 16px; line-height: 1.65; -webkit-font-smoothing: antialiased; }
+img { max-width: 100%; display: block; }
+a { color: var(--gold); }
+:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+.band-plum :focus-visible, .hero :focus-visible { outline-color: var(--gold-light); }
+.wrap { width: min(1120px, 100% - 40px); margin-inline: auto; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+h1, h2, h3 { font-family: var(--display); font-weight: 600; line-height: 1.1; margin: 0; text-wrap: balance; }
+h2 { font-size: clamp(2.2rem, 4.2vw, 3.3rem); color: var(--plum); }
+h3 { font-size: 1.75rem; color: var(--plum); }
+p { margin: 0; }
+.eyebrow { font-weight: 600; font-size: 0.74rem; letter-spacing: 0.32em; text-transform: uppercase; color: var(--gold); margin: 0 0 0.9rem; }
+section { padding: clamp(56px, 8vw, 104px) 0; }
+.band-plum { background: var(--plum); color: var(--cream); }
+.band-plum h2, .band-plum h3 { color: var(--gold-light); }
+.band-plum .eyebrow { color: var(--gold-light); }
+.band-ivory { background: var(--ivory); }
+.section-head { max-width: 660px; margin-bottom: 40px; display: flex; flex-direction: column; gap: 12px; }
+.section-head .eyebrow { margin: 0; }
+.section-head p { color: var(--muted); max-width: 60ch; }
+.band-plum .section-head p { color: rgba(248, 243, 234, 0.84); }
+
+/* Buttons */
+.btn { display: inline-flex; align-items: center; justify-content: center; min-height: 52px; padding: 0 30px; font-family: var(--body); font-weight: 700; font-size: 0.8rem; letter-spacing: 0.22em; text-transform: uppercase; text-decoration: none; border: 1px solid transparent; cursor: pointer; transition: background 0.2s, border-color 0.2s, color 0.2s; }
+.btn-gold { background: var(--gold-light); color: var(--plum); }
+.btn-gold:hover { background: #EFDCAF; }
+.btn-ghost { background: transparent; color: var(--cream); border-color: rgba(248, 243, 234, 0.6); }
+.btn-ghost:hover { border-color: var(--gold-light); color: var(--gold-light); }
+
+/* Hero */
+.hero { position: relative; isolation: isolate; overflow: hidden; background: var(--plum); color: var(--cream); }
+.hero-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 32%; z-index: -2; }
+.hero-scrim { position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(36, 18, 58, 0.78) 0%, rgba(36, 18, 58, 0.38) 28%, rgba(36, 18, 58, 0.5) 58%, rgba(36, 18, 58, 0.96) 100%); }
+.hero-frame { position: absolute; inset: 16px; border: 1px solid rgba(227, 200, 142, 0.65); pointer-events: none; }
+.hero-frame::after { content: ""; position: absolute; inset: 7px; border: 1px solid rgba(227, 200, 142, 0.28); }
+.topbar { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-top: 40px; }
+.topbar img { width: 116px; height: auto; }
+.topbar a.top-link { color: var(--gold-light); font-weight: 600; font-size: 0.74rem; letter-spacing: 0.28em; text-transform: uppercase; text-decoration: none; padding: 12px 0; }
+.hero-inner { max-width: 880px; margin-inline: auto; text-align: center; padding: clamp(72px, 13vw, 160px) 0 clamp(64px, 9vw, 108px); }
+.hero .eyebrow { color: var(--cream); letter-spacing: 0.36em; }
+.hero h1 { font-style: italic; font-weight: 500; font-size: clamp(4.4rem, 12.5vw, 9.6rem); line-height: 0.95; color: var(--gold-light); }
+.lede { font-family: var(--display); font-weight: 600; font-size: clamp(1.45rem, 2.7vw, 2.05rem); line-height: 1.28; margin: 1.1rem auto 0; max-width: 32ch; }
+.date-tiles { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; margin-top: 2.4rem; }
+.date-tile { display: flex; flex-direction: column; align-items: center; gap: 2px; min-width: 210px; padding: 14px 26px 16px; border: 1px solid var(--gold-light); background: rgba(36, 18, 58, 0.5); color: var(--cream); text-decoration: none; transition: background 0.2s; }
+.date-tile:hover { background: rgba(227, 200, 142, 0.16); }
+.date-tile .dow { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold-light); }
+.date-tile .d { font-family: var(--display); font-size: 1.95rem; font-weight: 600; line-height: 1.15; }
+.cta-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; margin-top: 2rem; }
+.hero .fine { margin-top: 1.4rem; font-size: 0.84rem; letter-spacing: 0.04em; color: rgba(248, 243, 234, 0.86); }
+
+/* At a glance */
+.glance { padding: 0 0 clamp(56px, 8vw, 96px); background: var(--plum); }
+.facts { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+.fact { background: var(--ivory); border-top: 2px solid var(--gold-light); padding: 22px 22px 24px; display: flex; flex-direction: column; gap: 8px; }
+.fact .label { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); }
+.fact p { font-weight: 600; color: var(--plum); line-height: 1.45; }
+.fact .price { font-family: var(--display); font-size: 2.3rem; line-height: 1; font-weight: 600; font-variant-numeric: tabular-nums; }
+.fact .sub { font-weight: 500; font-size: 0.85rem; color: var(--muted); }
+
+/* The day */
+.strip { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; margin-bottom: 48px; }
+.strip figure { margin: 0; display: flex; flex-direction: column; gap: 10px; }
+.strip img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
+.strip figcaption { font-size: 0.82rem; font-weight: 500; color: var(--muted); }
+.timeline { list-style: none; margin: 0; padding: 0; max-width: 860px; }
+.timeline li { display: grid; grid-template-columns: 170px minmax(0, 1fr); gap: 28px; padding: 20px 0; border-top: 1px solid var(--line); }
+.timeline li:last-child { border-bottom: 1px solid var(--line); }
+.timeline .when { font-size: 0.74rem; font-weight: 600; letter-spacing: 0.26em; text-transform: uppercase; color: var(--gold); padding-top: 4px; }
+.timeline p { max-width: 62ch; }
+
+/* 21 Royal */
+.royal { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); gap: clamp(32px, 6vw, 72px); align-items: center; }
+.royal-photos { position: relative; padding-bottom: 72px; }
+.royal-photos .room { width: 88%; aspect-ratio: 740 / 448; object-fit: cover; }
+.royal-photos .table { position: absolute; right: 0; bottom: 0; width: 52%; aspect-ratio: 717 / 448; object-fit: cover; border: 6px solid var(--plum); outline: 1px solid var(--gold-light); }
+.royal-text { display: flex; flex-direction: column; gap: 16px; }
+.royal-text p { color: rgba(248, 243, 234, 0.9); max-width: 58ch; }
+.royal-text a { color: var(--gold-light); }
+.seats { margin-top: 8px; padding-top: 18px; border-top: 1px solid rgba(227, 200, 142, 0.45); font-family: var(--display); font-style: italic; font-size: 1.6rem; line-height: 1.3; color: var(--gold-light) !important; }
+
+/* Included */
+.included { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 18px; }
+.card { padding: 30px 30px 32px; display: flex; flex-direction: column; gap: 14px; }
+.card-light { background: var(--ivory); }
+.card-dark { background: var(--plum); color: var(--cream); }
+.card-dark h3 { color: var(--gold-light); }
+.ticks { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+.ticks li { position: relative; padding-left: 22px; }
+.ticks li::before { content: ""; position: absolute; left: 2px; top: 0.62em; width: 7px; height: 7px; background: var(--gold); transform: rotate(45deg); }
+.card-dark .ticks li::before { background: var(--gold-light); }
+.note { margin-top: 20px; color: var(--muted); font-size: 0.92rem; max-width: 70ch; }
+
+/* Upgrades */
+.upgrades { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+.up { display: flex; flex-direction: column; background: var(--ivory); }
+.up img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
+.up-body { padding: 24px 26px 28px; display: flex; flex-direction: column; gap: 8px; }
+.up .cost { font-weight: 600; font-size: 0.92rem; color: var(--gold); font-variant-numeric: tabular-nums; }
+.up p { font-size: 0.95rem; }
+.up-dark { background: var(--plum); color: var(--cream); justify-content: center; }
+.up-dark h3 { color: var(--gold-light); }
+.up-dark .cost { color: var(--gold-light); }
+.up-dark p { color: rgba(248, 243, 234, 0.88); }
+
+/* Pricing */
+.table-box { overflow-x: auto; }
+.prices { width: 100%; min-width: 560px; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+.prices th { background: var(--plum); color: var(--gold-light); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; text-align: left; padding: 14px 18px; }
+.prices td { padding: 15px 18px; border-bottom: 1px solid var(--line); vertical-align: top; }
+.prices td:first-child { font-weight: 600; color: var(--plum); }
+.prices td:last-child, .prices th:last-child { text-align: right; white-space: nowrap; }
+.prices td:last-child { font-weight: 600; color: var(--plum); }
+.prices tbody tr:nth-child(even) td { background: var(--cream); }
+.families-title { margin: 48px 0 18px; font-size: 1.8rem; }
+.families { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+.family { background: var(--cream); border-top: 2px solid var(--gold-light); padding: 18px 18px 20px; display: flex; flex-direction: column; justify-content: space-between; gap: 14px; }
+.family p { font-size: 0.86rem; color: var(--muted); }
+.family .sum { font-family: var(--display); font-weight: 600; font-size: 2rem; line-height: 1; color: var(--plum); font-variant-numeric: tabular-nums; }
+
+/* Reserve */
+.reserve-grid { display: grid; grid-template-columns: minmax(0, 1.65fr) minmax(0, 1fr); gap: 28px; align-items: start; }
+.form-card { background: var(--ivory); color: var(--ink); padding: clamp(24px, 4vw, 40px); }
+form { display: flex; flex-direction: column; gap: 26px; }
+fieldset { border: 0; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+legend, .lbl { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--plum); padding: 0; margin-bottom: 4px; }
+.field { display: flex; flex-direction: column; gap: 6px; }
+.row-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.row-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+input[type="text"], input[type="email"], input[type="tel"], input[type="number"], textarea { width: 100%; min-height: 48px; padding: 12px 14px; font: inherit; font-size: 1rem; color: var(--ink); background: #FFFFFF; border: 1px solid #CDC3B2; border-radius: 0; }
+textarea { min-height: 88px; resize: vertical; }
+input:focus, textarea:focus { border-color: var(--gold); outline: 2px solid rgba(138, 106, 44, 0.35); outline-offset: 0; }
+.hint { font-size: 0.82rem; color: var(--muted); }
+.choices { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.choice { position: relative; display: flex; flex-direction: column; gap: 2px; padding: 14px 16px 15px; border: 1px solid #CDC3B2; background: #FFFFFF; cursor: pointer; }
+.choice input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.choice .dow { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: var(--gold); }
+.choice .d { font-family: var(--display); font-weight: 600; font-size: 1.45rem; line-height: 1.15; color: var(--plum); }
+.choice:has(input:checked) { border-color: var(--plum); box-shadow: inset 0 0 0 1px var(--plum); background: #FBF6EC; }
+.choice:has(input:focus-visible) { outline: 2px solid var(--gold); outline-offset: 2px; }
+.checks { display: flex; flex-direction: column; gap: 10px; }
+.check { display: grid; grid-template-columns: 22px minmax(0, 1fr); gap: 10px; align-items: start; cursor: pointer; }
+.check input { width: 18px; height: 18px; margin: 3px 0 0; accent-color: var(--plum); }
+.check span small { color: var(--muted); font-size: 0.85rem; }
+.inline-total { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 20px; padding: 16px 18px; background: var(--cream); border-left: 0; font-variant-numeric: tabular-nums; }
+.inline-total b { color: var(--plum); }
+.submit-row { display: flex; flex-direction: column; gap: 12px; }
+.submit-row .btn { width: 100%; }
+.status { font-size: 0.95rem; padding: 14px 16px; background: var(--cream); border-top: 2px solid var(--gold); }
+.status[hidden] { display: none; }
+.estimate { position: sticky; top: 24px; border: 1px solid var(--gold-light); padding: 28px; display: flex; flex-direction: column; gap: 14px; font-variant-numeric: tabular-nums; }
+.estimate h3 { font-size: 1.6rem; }
+.est-row { display: flex; justify-content: space-between; gap: 16px; font-size: 0.95rem; color: rgba(248, 243, 234, 0.9); }
+.est-total { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding-top: 14px; border-top: 1px solid rgba(227, 200, 142, 0.5); }
+.est-total span:last-child { font-family: var(--display); font-size: 2.2rem; font-weight: 600; color: var(--gold-light); }
+.est-dep { display: flex; justify-content: space-between; gap: 16px; font-weight: 600; color: var(--cream); }
+.est-note { font-size: 0.84rem; color: rgba(248, 243, 234, 0.8); }
+.call { margin-top: 28px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 18px 28px; padding: 26px 28px; border: 1px solid rgba(227, 200, 142, 0.45); }
+.call h3 { font-size: 1.7rem; }
+.call p { color: rgba(248, 243, 234, 0.88); margin-top: 6px; }
+.call .mail { color: var(--gold-light); font-weight: 600; }
+
+/* Terms */
+.terms { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 48px; margin: 0; }
+.terms div { padding: 18px 0; border-top: 1px solid var(--line); }
+.terms dt { font-weight: 600; color: var(--plum); margin-bottom: 4px; }
+.terms dd { margin: 0; color: var(--muted); font-size: 0.95rem; }
+
+/* Footer */
+footer { background: var(--plum); color: rgba(248, 243, 234, 0.84); padding: 56px 0 64px; }
+.foot { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 28px; }
+.foot img { width: 150px; height: auto; }
+.foot-text { max-width: 620px; display: flex; flex-direction: column; gap: 10px; font-size: 0.92rem; }
+.foot-text a { color: var(--gold-light); }
+.foot-text .small { font-size: 0.8rem; color: rgba(248, 243, 234, 0.7); }
+
+@media (max-width: 900px) {
+  .facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .royal, .included, .reserve-grid { grid-template-columns: minmax(0, 1fr); }
+  .estimate { position: static; }
+  .families { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .terms { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 640px) {
+  .facts, .upgrades, .row-2, .row-3, .choices { grid-template-columns: minmax(0, 1fr); }
+  .strip { grid-template-columns: minmax(0, 1fr); }
+  .timeline li { grid-template-columns: minmax(0, 1fr); gap: 6px; }
+  .date-tile { min-width: 0; width: 100%; }
+  .cta-row .btn { width: 100%; }
+  .royal-photos { padding-bottom: 0; display: flex; flex-direction: column; gap: 12px; }
+  .royal-photos .room { width: 100%; }
+  .royal-photos .table { position: static; width: 100%; border: 0; outline: 0; }
+  .families { grid-template-columns: minmax(0, 1fr); }
+  .prices { min-width: 0; }
+  .prices th:nth-child(2), .prices td:nth-child(2) { display: none; }
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <img class="hero-img" src="img/castle.jpg" alt="Sleeping Beauty Castle lit for the holidays at night">
+  <div class="hero-scrim" aria-hidden="true"></div>
+  <div class="hero-frame" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="topbar">
+      <a href="https://www.createimpactnow.org"><img src="img/create-impact-logo-white.png" alt="Create Impact Now" width="116" height="51"></a>
+      <a class="top-link" href="#reserve">Reserve</a>
+    </div>
+    <div class="hero-inner">
+      <p class="eyebrow">An invitation for CEO Life members</p>
+      <h1>Inner Circle</h1>
+      <p class="lede">A private holiday day at Disneyland for you and your family, with a members-only dinner at 21 Royal.</p>
+      <div class="date-tiles">
+        <a class="date-tile" href="#reserve" data-day="Thursday, December 17"><span class="dow">Thursday</span><span class="d">December 17</span></a>
+        <a class="date-tile" href="#reserve" data-day="Tuesday, December 22"><span class="dow">Tuesday</span><span class="d">December 22</span></a>
+      </div>
+      <div class="cta-row">
+        <a class="btn btn-gold" href="#reserve">Reserve your place</a>
+        <a class="btn btn-ghost" href="#call">Book a call</a>
+      </div>
+      <p class="fine">Reserve by Thursday, November 19. Only 12 seats at the members' table.</p>
+    </div>
+  </div>
+</header>
+
+<section class="glance" aria-labelledby="glance-title">
+  <div class="wrap">
+    <h2 id="glance-title" class="sr-only">At a glance</h2>
+    <div class="facts">
+      <div class="fact"><span class="label">When</span><p>Thursday, December 17 or Tuesday, December 22, 2026</p></div>
+      <div class="fact"><span class="label">Who</span><p>CEO Life members, plus spouses, partners, and children</p></div>
+      <div class="fact"><span class="label">Members</span><span class="price">$4,625</span><span class="sub">Park day and the 21 Royal dinner</span></div>
+      <div class="fact"><span class="label">Guests, ages 3 and up</span><span class="price">$2,250</span><span class="sub">Children under 3 complimentary</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="day" aria-labelledby="day-title">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">The day</p>
+      <h2 id="day-title">From your front door to the fireworks</h2>
+      <p>Your family spends the day across Disneyland and Disney California Adventure with private VIP guides, priority access to attractions, and reserved seating for the holiday parade and fireworks.</p>
+    </div>
+    <div class="strip">
+      <figure><img src="img/main-street-tree.jpg" alt="The Christmas tree on Main Street, U.S.A."><figcaption>Main Street, U.S.A. for the holidays</figcaption></figure>
+      <figure><img src="img/small-world-holiday.jpg" alt="it's a small world Holiday lit up at night"><figcaption>it's a small world Holiday</figcaption></figure>
+      <figure><img src="img/parade-family.jpg" alt="A family cheering at the holiday parade"><figcaption>Reserved seating for the holiday parade</figcaption></figure>
+    </div>
+    <ol class="timeline">
+      <li><span class="when">Morning</span><p>A private car picks up each family at home. Families who add the character breakfast start there.</p></li>
+      <li><span class="when">Late morning</span><p>Your VIP guides meet you and the day begins across both parks, with priority access to attractions throughout. Holiday highlights include Sleeping Beauty's Winter Castle, it's a small world Holiday, and Haunted Mansion Holiday.</p></li>
+      <li><span class="when">Midday</span><p>Table-service lunch in the park.</p></li>
+      <li><span class="when">Afternoon</span><p>More rides, holiday treats, and Disney PhotoPass photos along the way.</p></li>
+      <li><span class="when">Early evening</span><p>Members head to 21 Royal. Families stay with their guides.</p></li>
+      <li><span class="when">Evening</span><p>Families watch A Christmas Fantasy Parade and the holiday fireworks from reserved seating, then ride home. Members finish with dessert on the 21 Royal patio during the fireworks, then ride home.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="band-plum" id="royal" aria-labelledby="royal-title">
+  <div class="wrap royal">
+    <div class="royal-photos">
+      <img class="room" src="img/21-royal-room.jpg" alt="The private dining room at 21 Royal set for dinner">
+      <img class="table" src="img/21-royal-table.jpg" alt="A gold-rimmed place setting at 21 Royal">
+    </div>
+    <div class="royal-text">
+      <p class="eyebrow">The members' evening</p>
+      <h2 id="royal-title">The members' dinner at 21 Royal</h2>
+      <p><a href="https://www.21royaldisneyland.com">21 Royal</a> is a private residence in the heart of Disneyland, designed for Walt and Lillian Disney to host family, friends, and dignitaries. For one evening it belongs to CEO Life members: one table for up to 12, a multi-course dinner with drinks, and dessert on the private patio overlooking the park during the fireworks.</p>
+      <p>Our team shapes the evening around connection. We plan the seating around who should meet whom, host the night, and lead a short conversation between courses.</p>
+      <p class="seats">Each dinner seats 12, and seats go in order of registration.</p>
+    </div>
+  </div>
+</section>
+
+<section id="included" aria-labelledby="included-title">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">What's included</p>
+      <h2 id="included-title">One price, nothing to settle on the day</h2>
+      <p>Admission, guides, meals, cars, gifts, tax on included meals, and every gratuity are built in.</p>
+    </div>
+    <div class="included">
+      <div class="card card-light">
+        <h3>Every guest</h3>
+        <ul class="ticks">
+          <li>Private car service from your door and back, with car seats for children who need them</li>
+          <li>Park Hopper admission to Disneyland and Disney California Adventure</li>
+          <li>A private VIP guide for each party, with priority access to attractions</li>
+          <li>Reserved seating for the holiday parade and fireworks</li>
+          <li>Table-service lunch, plus snacks and drinks through the day</li>
+          <li>Disney PhotoPass photos, with a framed print for each family in a CEO Life-branded frame</li>
+          <li>A welcome gift</li>
+          <li>All guide gratuities and tax on included meals</li>
+        </ul>
+      </div>
+      <div class="card card-dark">
+        <h3>Members also receive</h3>
+        <ul class="ticks">
+          <li>The members-only dinner at 21 Royal, with drinks</li>
+          <li>A keepsake from the evening</li>
+          <li>A private car home after dinner</li>
+        </ul>
+      </div>
+    </div>
+    <p class="note">Families are grouped into private VIP parties of up to 10 people. Families who want guides of their own can book a Private Family Day.</p>
+  </div>
+</section>
+
+<section class="band-ivory" id="upgrades" aria-labelledby="upgrades-title">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Upgrades and add-ons</p>
+      <h2 id="upgrades-title">Make the day your own</h2>
+      <p>Choose any of these on the reservation form and we'll confirm availability with Disney. Upgrades are paid in full when reserved.</p>
+    </div>
+    <div class="upgrades">
+      <article class="up">
+        <img src="img/vip-guide.jpg" alt="A VIP guide waving to a family on an attraction">
+        <div class="up-body">
+          <h3>Private Family Day</h3>
+          <p class="cost">$22,950 per family of up to 6, including infants</p>
+          <p>Everything in the standard day, plus two VIP guides devoted to your family for up to 12 hours, a table-service meal and a quick-service meal, a Disney PhotoPass portrait session, and a private character experience or behind-the-scenes tour arranged by Disney. This price replaces the guest prices for your family. Each CEO Life member in your family adds the 21 Royal dinner for $2,375.</p>
+        </div>
+      </article>
+      <article class="up">
+        <img src="img/princess-breakfast.jpg" alt="A Disney Princess greeting guests at breakfast">
+        <div class="up-body">
+          <h3>Character breakfast</h3>
+          <p class="cost">$225 per guest ages 3 and up, children under 3 free</p>
+          <p>Start the day at Disney Princess Breakfast Adventures at Disney's Grand Californian Hotel &amp; Spa: a three-course breakfast with Disney Princesses, a meet and greet, and Disney PhotoPass photos.</p>
+        </div>
+      </article>
+      <article class="up up-dark">
+        <div class="up-body">
+          <h3>Private family dinner at 21&nbsp;Royal</h3>
+          <p class="cost">$21,500 per party of up to 12</p>
+          <p>Your own evening at 21 Royal for family and friends, on a night other than the members' dinner: a multi-course dinner with drinks, dessert on the private patio during the fireworks, Disneyland admission, and private car service. Subject to Disney's availability.</p>
+        </div>
+      </article>
+      <article class="up up-dark">
+        <div class="up-body">
+          <h3>Make it a staycation</h3>
+          <p class="cost">Quoted for your date</p>
+          <p>Rooms and suites at Disney's Grand Californian Hotel &amp; Spa for out-of-town guests or anyone who wants to stay over.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="pricing" aria-labelledby="pricing-title">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Pricing</p>
+      <h2 id="pricing-title">Per person, either date</h2>
+      <p>Prices cover admission, guides, the meals listed above, cars, gifts, tax on included meals, and all gratuities.</p>
+    </div>
+    <div class="table-box">
+      <table class="prices">
+        <thead><tr><th scope="col">Ticket</th><th scope="col">What it covers</th><th scope="col">Price</th></tr></thead>
+        <tbody>
+          <tr><td>Member</td><td>Park day and the members' dinner at 21 Royal</td><td>$4,625</td></tr>
+          <tr><td>Guest, ages 3 and up</td><td>Park day</td><td>$2,250</td></tr>
+          <tr><td>Child under 3</td><td>Park day</td><td>Complimentary</td></tr>
+          <tr><td>Private Family Day</td><td>Up to 6 people, two guides, meals, character experience</td><td>$22,950 per family</td></tr>
+          <tr><td>Character breakfast</td><td>Ages 3 and up, before the park day</td><td>$225 per guest</td></tr>
+          <tr><td>Private family dinner at 21 Royal</td><td>Up to 12 people, on another evening</td><td>$21,500 per party</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <h3 class="families-title">What a family pays</h3>
+    <div class="families">
+      <div class="family"><p>A member attending alone</p><span class="sum">$4,625</span></div>
+      <div class="family"><p>A member and a spouse</p><span class="sum">$6,875</span></div>
+      <div class="family"><p>A member, a spouse, and two children ages 3 and up</p><span class="sum">$11,375</span></div>
+      <div class="family"><p>The same family with a Private Family Day</p><span class="sum">$25,325</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="band-plum" id="reserve" aria-labelledby="reserve-title">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Reserve your place</p>
+      <h2 id="reserve-title">Tell us who's coming</h2>
+      <p>We'll confirm your party and email your secure deposit link within one business day. Your registration is complete once your deposit is received.</p>
+    </div>
+    <div class="reserve-grid">
+      <div class="form-card">
+        <form id="reserve-form" novalidate>
+          <fieldset>
+            <legend>Choose your day</legend>
+            <div class="choices">
+              <label class="choice"><input type="radio" name="day" id="day-17" value="Thursday, December 17" required><span class="dow">Thursday</span><span class="d">December 17</span></label>
+              <label class="choice"><input type="radio" name="day" id="day-22" value="Tuesday, December 22"><span class="dow">Tuesday</span><span class="d">December 22</span></label>
+              <label class="choice"><input type="radio" name="day" id="day-either" value="Either date works"><span class="dow">Flexible</span><span class="d">Either date works</span></label>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>About you</legend>
+            <div class="row-2">
+              <div class="field"><label class="hint" for="name">Your name (CEO Life member)</label><input type="text" id="name" name="name" autocomplete="name" required></div>
+              <div class="field"><label class="hint" for="company">Company</label><input type="text" id="company" name="company" autocomplete="organization"></div>
+              <div class="field"><label class="hint" for="email">Email</label><input type="email" id="email" name="email" autocomplete="email" required></div>
+              <div class="field"><label class="hint" for="phone">Mobile</label><input type="tel" id="phone" name="phone" autocomplete="tel" required></div>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Your party</legend>
+            <div class="row-3">
+              <div class="field"><label class="hint" for="members">CEO Life members</label><input type="number" id="members" name="members" min="1" max="12" step="1" value="1" inputmode="numeric" required></div>
+              <div class="field"><label class="hint" for="guests">Guests, ages 3 and up</label><input type="number" id="guests" name="guests" min="0" max="30" step="1" value="0" inputmode="numeric"></div>
+              <div class="field"><label class="hint" for="infants">Children under 3</label><input type="number" id="infants" name="infants" min="0" max="10" step="1" value="0" inputmode="numeric"></div>
+            </div>
+            <div class="field"><label class="hint" for="ages">Children's ages, if any</label><input type="text" id="ages" name="ages" placeholder="For example: 8, 5, and 18 months"></div>
+            <div class="field"><label class="hint" for="pickup">Pickup address for the private car</label><textarea id="pickup" name="pickup" autocomplete="street-address"></textarea></div>
+            <div class="field"><label class="hint" for="dietary">Dietary needs or allergies</label><textarea id="dietary" name="dietary"></textarea></div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Upgrades you'd like</legend>
+            <div class="checks">
+              <label class="check"><input type="checkbox" name="upgrades" id="up-family" value="Private Family Day"><span>Private Family Day <small>($22,950 per family of up to 6)</small></span></label>
+              <label class="check"><input type="checkbox" name="upgrades" id="up-breakfast" value="Character breakfast"><span>Character breakfast <small>($225 per guest ages 3 and up)</small></span></label>
+              <label class="check"><input type="checkbox" name="upgrades" id="up-royal" value="Private family dinner at 21 Royal"><span>Private family dinner at 21 Royal <small>($21,500 per party of up to 12)</small></span></label>
+              <label class="check"><input type="checkbox" name="upgrades" id="up-stay" value="Staycation at the Grand Californian"><span>Staycation at Disney's Grand Californian <small>(quoted for your date)</small></span></label>
+            </div>
+            <p class="hint">Upgrades are quoted separately and paid in full when reserved.</p>
+          </fieldset>
+
+          <div class="field"><label class="lbl" for="notes">Anything else we should know?</label><textarea id="notes" name="notes"></textarea></div>
+
+          <label class="check"><input type="checkbox" id="agree" name="agree" required><span>I've read the <a href="#terms">payment terms</a>.</span></label>
+
+          <div class="submit-row">
+            <div class="inline-total" aria-hidden="true"><span>Estimated total <b data-out="total">$4,625</b></span><span>Deposit today <b data-out="deposit">$2,312.50</b></span></div>
+            <button class="btn btn-gold" type="submit" id="submit">Send my reservation</button>
+            <p class="status" id="status" role="status" aria-live="polite" hidden></p>
+          </div>
+        </form>
+      </div>
+
+      <aside class="estimate" aria-labelledby="estimate-title" aria-live="polite">
+        <h3 id="estimate-title">Your estimate</h3>
+        <div class="est-row"><span data-out="memberLine">1 member at $4,625</span><span data-out="memberSum">$4,625</span></div>
+        <div class="est-row"><span data-out="guestLine">0 guests at $2,250</span><span data-out="guestSum">$0</span></div>
+        <div class="est-row"><span data-out="infantLine">0 children under 3</span><span>Complimentary</span></div>
+        <div class="est-total"><span>Total</span><span data-out="total">$4,625</span></div>
+        <div class="est-dep"><span>Deposit (50%)</span><span data-out="deposit">$2,312.50</span></div>
+        <p class="est-note" data-out="balanceNote">Balance due Thursday, November 19 for December 17, or Tuesday, November 24 for December 22.</p>
+        <p class="est-note">Upgrades are quoted separately.</p>
+      </aside>
+    </div>
+
+    <div class="call" id="call">
+      <div>
+        <h3>Prefer to talk first?</h3>
+        <p>Book a 15-minute call with Dale Eugene, or email <span class="mail">Dale@CreateImpactNow.org</span></p>
+      </div>
+      <a class="btn btn-ghost" id="call-link" href="mailto:Dale@CreateImpactNow.org?subject=Inner%20Circle%20call">Book a 15-minute call</a>
+    </div>
+  </div>
+</section>
+
+<section id="terms" aria-labelledby="terms-title">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Payment terms</p>
+      <h2 id="terms-title">The fine print</h2>
+    </div>
+    <dl class="terms">
+      <div><dt>Deposit</dt><dd>50% of your party's total, paid when you reserve. Your registration is complete once your deposit is received, and seats go in order of registration.</dd></div>
+      <div><dt>Balance</dt><dd>Due Thursday, November 19 for December 17, or Tuesday, November 24 for December 22.</dd></div>
+      <div><dt>Upgrades and add-ons</dt><dd>Paid in full when reserved.</dd></div>
+      <div><dt>Confirming your date</dt><dd>Each date is confirmed once 10 members reserve. Until your date is confirmed, your deposit is fully refundable. If your date doesn't reach 10 members by November 19, you can move to the other date or receive a full refund.</dd></div>
+      <div><dt>Once your date is confirmed</dt><dd>Payments are non-refundable, since they secure 21 Royal and the VIP guides. Guest names can be changed at no charge up to 7 days before.</dd></div>
+      <div><dt>If Disney changes an experience</dt><dd>We pass along any refund or credit and offer the closest available alternative.</dd></div>
+      <div><dt>Party size</dt><dd>VIP parties hold up to 10 people, and infants count toward that number.</dd></div>
+      <div><dt>Not included</dt><dd>Purchases in the parks. Hotel stays are available as an add-on.</dd></div>
+      <div><dt>Tax</dt><dd>Inner Circle is a purchased experience, so no part of the price is tax-deductible.</dd></div>
+      <div><dt>Disney policies</dt><dd>Disney experiences follow Disney's own policies. Entertainment and schedules are set by Disneyland Resort and can change.</dd></div>
+    </dl>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot">
+    <img src="img/create-impact-logo-white.png" alt="Create Impact Now" width="150" height="66">
+    <div class="foot-text">
+      <p>Create Impact Now is the events and experiences brand of Always In The Club Foundation. Our team has produced more than 250 events with leaders in entertainment, business, and government.</p>
+      <p>Questions: Dale Eugene, <a href="mailto:Dale@CreateImpactNow.org">Dale@CreateImpactNow.org</a> · <a href="https://www.createimpactnow.org">CreateImpactNow.org</a></p>
+      <p class="small">Create Impact Now is an independent producer and is not affiliated with The Walt Disney Company. Photography: Disneyland Resort.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  // Go-live settings: paste the Google Apps Script web app URL and the call booking link here.
+  var CONFIG = {
+    formEndpoint: "https://script.google.com/macros/s/AKfycbz6ktKyUqylWUWxj-O3T_j1J00xwBIGzuwPWNGgH27oXHq6tcx8iCadAISFjndx71Y/exec",
+    bookingUrl: "",
+    contactEmail: "Dale@CreateImpactNow.org"
+  };
+  var PRICE = { member: 4625, guest: 2250 };
+  var BALANCE = {
+    "Thursday, December 17": "Balance due Thursday, November 19.",
+    "Tuesday, December 22": "Balance due Tuesday, November 24.",
+    "Either date works": "Balance due November 19 or 24, depending on your confirmed date."
+  };
+  var DEFAULT_BALANCE = "Balance due Thursday, November 19 for December 17, or Tuesday, November 24 for December 22.";
+
+  var form = document.getElementById("reserve-form");
+  var status = document.getElementById("status");
+  var callLink = document.getElementById("call-link");
+  if (CONFIG.bookingUrl) { callLink.href = CONFIG.bookingUrl; }
+
+  function money(n) {
+    var cents = Math.round(n * 100) % 100 !== 0;
+    return n.toLocaleString("en-US", { style: "currency", currency: "USD", minimumFractionDigits: cents ? 2 : 0, maximumFractionDigits: 2 });
+  }
+  function count(id, min, max) {
+    var v = parseInt(document.getElementById(id).value, 10);
+    if (isNaN(v)) v = min;
+    return Math.min(max, Math.max(min, v));
+  }
+  function plural(n, one, many) { return n + " " + (n === 1 ? one : many); }
+  function setOut(key, text) {
+    document.querySelectorAll('[data-out="' + key + '"]').forEach(function (el) { el.textContent = text; });
+  }
+  function selectedDay() {
+    var r = form.querySelector('input[name="day"]:checked');
+    return r ? r.value : "";
+  }
+  function totals() {
+    var m = count("members", 1, 12), g = count("guests", 0, 30), i = count("infants", 0, 10);
+    var total = m * PRICE.member + g * PRICE.guest;
+    return { members: m, guests: g, infants: i, total: total, deposit: total / 2 };
+  }
+  function update() {
+    var t = totals();
+    setOut("memberLine", plural(t.members, "member", "members") + " at " + money(PRICE.member));
+    setOut("memberSum", money(t.members * PRICE.member));
+    setOut("guestLine", plural(t.guests, "guest", "guests") + " at " + money(PRICE.guest));
+    setOut("guestSum", money(t.guests * PRICE.guest));
+    setOut("infantLine", plural(t.infants, "child", "children") + " under 3");
+    setOut("total", money(t.total));
+    setOut("deposit", money(t.deposit));
+    setOut("balanceNote", BALANCE[selectedDay()] || DEFAULT_BALANCE);
+  }
+  form.addEventListener("input", update);
+  form.addEventListener("change", update);
+
+  document.querySelectorAll(".date-tile").forEach(function (tile) {
+    tile.addEventListener("click", function () {
+      var day = tile.getAttribute("data-day");
+      var radio = form.querySelector('input[name="day"][value="' + day + '"]');
+      if (radio) { radio.checked = true; update(); }
+    });
+  });
+
+  function show(msg) { status.textContent = msg; status.hidden = false; }
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    if (!form.checkValidity()) {
+      var first = form.querySelector(":invalid");
+      show(first && first.name === "day" ? "Please choose your day." : first && first.id === "agree" ? "Please confirm you've read the payment terms." : "Please fill in your name, email, and mobile.");
+      if (first) first.focus();
+      return;
+    }
+    var t = totals();
+    var ups = Array.prototype.map.call(form.querySelectorAll('input[name="upgrades"]:checked'), function (c) { return c.value; });
+    function val(id) { return document.getElementById(id).value.trim(); }
+    var data = {
+      day: selectedDay(),
+      name: val("name"),
+      company: val("company"),
+      email: val("email"),
+      phone: val("phone"),
+      members: t.members, guests: t.guests, infants: t.infants,
+      childrenAges: val("ages"),
+      pickup: val("pickup"),
+      dietary: val("dietary"),
+      upgrades: ups.join(", "),
+      notes: val("notes"),
+      estimatedTotal: t.total,
+      deposit: t.deposit
+    };
+    var firstName = data.name.split(" ")[0] || "there";
+    if (!CONFIG.formEndpoint) {
+      show("This is a preview, so nothing was sent. Once the page is live, reservations go straight to our team.");
+      return;
+    }
+    var btn = document.getElementById("submit");
+    btn.disabled = true; btn.textContent = "Sending";
+    fetch(CONFIG.formEndpoint, { method: "POST", mode: "no-cors", headers: { "Content-Type": "text/plain;charset=utf-8" }, body: JSON.stringify(data) })
+      .then(function () {
+        show("Thank you, " + firstName + ". Your reservation request is in. We'll email your secure deposit link within one business day.");
+        btn.textContent = "Reservation sent";
+      })
+      .catch(function () {
+        show("We couldn't send your reservation. Please email " + CONFIG.contactEmail + " and we'll take care of it.");
+        btn.disabled = false; btn.textContent = "Send my reservation";
+      });
+  });
+
+  update();
+})();
+</script>
+</body>
+</html>
