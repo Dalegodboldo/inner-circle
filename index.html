@@ -543,6 +543,8 @@ footer { background: var(--plum); color: rgba(248, 243, 234, 0.84); padding: 56p
     bookingUrl: "https://calendly.com/dale-createimpactnow/free-consultation",
     // Paythen "Inner Circle deposit" template. The page adds each family's deposit, name, and email.
     paythenTemplate: "https://app.paythen.co/template/uvswplpb54",
+    // Test-mode copy of the same template. Open the page with ?test=1 to rehearse with a Stripe test card.
+    paythenTestTemplate: "https://app.paythen.co/template/tyswojrb98",
     contactEmail: "Dale@CreateImpactNow.org"
   };
   var PRICE = { member: 4625, guest: 2250 };
@@ -553,6 +555,7 @@ footer { background: var(--plum); color: rgba(248, 243, 234, 0.84); padding: 56p
   };
   var DEFAULT_BALANCE = "Balance due Thursday, November 19 for December 17, or Tuesday, November 24 for December 22.";
 
+  var TEST = new URLSearchParams(window.location.search).get("test") === "1";
   var form = document.getElementById("reserve-form");
   var status = document.getElementById("status");
   var callLink = document.getElementById("call-link");
@@ -607,14 +610,14 @@ footer { background: var(--plum); color: rgba(248, 243, 234, 0.84); padding: 56p
     var dates = { "Thursday, December 17": "December 17", "Tuesday, December 22": "December 22", "Either date works": "December 17 or 22" };
     var amount = d.deposit % 1 ? d.deposit.toFixed(2) : String(d.deposit);
     var params = new URLSearchParams({
-      plan_name: "Inner Circle deposit: " + d.name + ", " + (dates[d.day] || d.day),
+      plan_name: "Inner Circle deposit: " + d.name + ", " + (TEST ? "TEST " : "") + (dates[d.day.replace(/^TEST /, "")] || d.day),
       price: amount,
       number_of_payments: "1",
       name: d.name,
       email: d.email,
       customer_redirect_url: window.location.origin + window.location.pathname + "?deposit=received"
     });
-    return CONFIG.paythenTemplate + "?" + params.toString();
+    return (TEST ? CONFIG.paythenTestTemplate : CONFIG.paythenTemplate) + "?" + params.toString();
   }
   (function paidNotice() {
     var note = document.getElementById("paid-note");
@@ -649,6 +652,7 @@ footer { background: var(--plum); color: rgba(248, 243, 234, 0.84); padding: 56p
       estimatedTotal: t.total,
       deposit: t.deposit
     };
+    if (TEST) { data.day = "TEST " + data.day; }
     var firstName = data.name.split(" ")[0] || "there";
     if (!CONFIG.formEndpoint) {
       show("This is a preview, so nothing was sent. Once the page is live, reservations go straight to our team.");

@@ -22,3 +22,7 @@ Near the bottom of the file:
 ## Deploy
 
 Vercel, framework preset "Other", no build command. Every push to `main` redeploys.
+
+## Rehearsing the payment
+
+Open the page with `?test=1` on the end of the address. Reservations are marked TEST in the Sheet (so they don't count in the Summary), and the deposit opens Paythen's test-mode copy of the template, where the Stripe test card 4242 4242 4242 4242 (any future date, any CVC) completes the payment without charging anything.
